@@ -9,7 +9,7 @@ INSERT INTO <table_name_in_plural> ();
    VALUES(values);
 
 Utility Commands
-\! cls 
+\! cls
 mysqldump -u root -p --databases library_db >C:\dev2\it30a\backup\08182026_library_db.mysql
 
 mysqldump -u root -p --database library_db > "C:\dev2\it30a\backup\%date:~-4%_%date:~4,2%_%date:~7,2%_%time:~0,2%_%time:~3,2%_%time:~6,2%_%library_db.sql"
