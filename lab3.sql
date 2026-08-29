@@ -35,20 +35,18 @@ INSERT INTO borrow (student_id,book_id) VALUES
 
 SELECT
    br.borrow_id,
-
-   s.student_id,
+   
    CONCAT(
      s.student_first_name,
      ' ',
      s.student_last_name
    ) as student_name,
-   s.student_course,
-
+  
    b.book_title,
    b.book_author,
    b.book_category,
-
-   br.borrow_date
+   br.borrow_date,
+   br.borrow_return_date
 FROM borrow br
 JOIN students s ON
     br.student_id - s.student_id
@@ -57,3 +55,33 @@ JOIN books b ON
 
 WHERE br.borrow_return_date is NULL
 ORDER BY br.borrow_date  DESC;
+
+--august 27
+
+SELECT
+    br.borrow_id,
+    
+    CONCAT(
+        s.student_first_name,
+        ' ',
+        s.student_last_name
+    ) AS student_name,
+   
+    b.book_title,
+    b.book_author,
+    b.book_category,
+
+    br.borrow_date,
+    br.borrow_return_date
+FROM borrow br
+JOIN students s
+    ON br.student_id = s.student_id
+JOIN books b
+    ON br.book_id = b.book_id
+WHERE br.borrow_return_date is NOT NULL;
+ORDER BY br.borrow_date DESC;
+
+UPDATE borrow
+SET borrow_return_date = CURRENT_TIMESTAMP
+-- Set borrow id for the borrowed you want to return
+WHERE borrow_id = 1 AND borrow_return_date IS NULL;
