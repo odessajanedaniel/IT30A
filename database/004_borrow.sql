@@ -2,14 +2,14 @@
 SELECT
     br.borrow_id,
 
-    -- Student Name
+    -- Student name
     CONCAT(
         s.student_first_name,
         ' ',
         s.student_last_name
     ) AS student_name,
 
-    -- Books
+    -- books
     b.book_title,
     b.book_author,
     b.book_category,
